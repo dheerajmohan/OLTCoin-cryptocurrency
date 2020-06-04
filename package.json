@@ -1,0 +1,23 @@
+{
+  "name": "blockchain-cryptocurrency",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dheerajmohan/blockchain-cryptocurrency.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dheerajmohan/blockchain-cryptocurrency/issues"
+  },
+  "homepage": "https://github.com/dheerajmohan/blockchain-cryptocurrency#readme",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}

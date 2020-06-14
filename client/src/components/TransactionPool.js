@@ -6,13 +6,27 @@ import history from "../history";
 
 const POLL_INTERVAL_MS = 10000;
 
+function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
+
 class TransactionPool extends Component {
-    state = {transactionPoolMap: {} }
+    state = {transactionPoolMap: {}, nullMap: true };
 
     fetchTransactionPoolMap = () => {
         fetch(`${document.location.origin}/api/transaction-pool-map`)
             .then(response => response.json())
-            .then(json => this.setState({transactionPoolMap: json}));
+            .then(json => {
+                console.log(json);
+                this.setState({transactionPoolMap: json});
+                if(!isEmpty(json)) {
+                    this.setState({nullMap: false});  
+                }
+            });
     }
 
     fetchMineTransactions = () => {
@@ -20,6 +34,7 @@ class TransactionPool extends Component {
         .then(response => {
             if(response.status === 200) {
                 alert('success');
+                this.setState({nullMap: true})
                 history.push('/blocks'); 
             } else {
                 alert('The mine transactions block request did not complete');
@@ -41,6 +56,7 @@ class TransactionPool extends Component {
     }
 
     render() {
+        let isPoolNull = this.state;
         return (
             <div className="TransactionPool">
                 <Link to='/'>Home</Link>
@@ -58,12 +74,15 @@ class TransactionPool extends Component {
                     )
                 }
                 <hr />
-                <Button 
+                {
+                    this.state.nullMap ? null : 
+                    <Button 
                     bsStyle="danger"
                     onClick = {this.fetchMineTransactions}
-                >
+                    >
                     Mine the Transactions
-                </Button>
+                    </Button>
+                }
             </div>
         );
     }

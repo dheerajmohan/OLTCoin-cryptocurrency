@@ -46912,6 +46912,14 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 var POLL_INTERVAL_MS = 10000;
 
+function isEmpty(obj) {
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key)) return false;
+  }
+
+  return true;
+}
+
 var TransactionPool = /*#__PURE__*/function (_Component) {
   _inherits(TransactionPool, _Component);
 
@@ -46929,19 +46937,32 @@ var TransactionPool = /*#__PURE__*/function (_Component) {
     }
 
     return _possibleConstructorReturn(_this, (_temp = _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
-      transactionPoolMap: {}
+      transactionPoolMap: {},
+      nullMap: true
     }, _this.fetchTransactionPoolMap = function () {
       fetch("".concat(document.location.origin, "/api/transaction-pool-map")).then(function (response) {
         return response.json();
       }).then(function (json) {
-        return _this.setState({
+        console.log(json);
+
+        _this.setState({
           transactionPoolMap: json
         });
+
+        if (!isEmpty(json)) {
+          _this.setState({
+            nullMap: false
+          });
+        }
       });
     }, _this.fetchMineTransactions = function () {
       fetch("".concat(document.location.origin, "/api/mine-transactions")).then(function (response) {
         if (response.status === 200) {
           alert('success');
+
+          _this.setState({
+            nullMap: true
+          });
 
           _history.default.push('/blocks');
         } else {
@@ -46969,6 +46990,7 @@ var TransactionPool = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var isPoolNull = this.state;
       return _react.default.createElement("div", {
         className: "TransactionPool"
       }, _react.default.createElement(_reactRouterDom.Link, {
@@ -46979,7 +47001,7 @@ var TransactionPool = /*#__PURE__*/function (_Component) {
         }, _react.default.createElement("hr", null), _react.default.createElement(_Transaction.default, {
           transaction: transaction
         }));
-      }), _react.default.createElement("hr", null), _react.default.createElement(_reactBootstrap.Button, {
+      }), _react.default.createElement("hr", null), this.state.nullMap ? null : _react.default.createElement(_reactBootstrap.Button, {
         bsStyle: "danger",
         onClick: this.fetchMineTransactions
       }, "Mine the Transactions"));
@@ -47129,7 +47151,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "32819" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42283" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

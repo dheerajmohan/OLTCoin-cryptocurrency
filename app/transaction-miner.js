@@ -14,12 +14,10 @@ class TransactionMiner {
     mineTransactions() {
 
 		const validTransactions = this.transactionPool.validTransactions();
+		if(validTransactions.length === 0)
+		{	this.transactionPool.clear(); return;}///////////////////////////////////////
 
-        if(validTransactions.length === 0) {	
-            console.log("empty pool"); 
-            return;
-        }
-        
+
 		let totalTransactionCount =0 ; /////////////////////////////////////////
 		for(let transaction of validTransactions){
 
@@ -28,14 +26,14 @@ class TransactionMiner {
 
 
 		validTransactions.push(
-
 			Transaction.rewardTransaction({minerWallet:this.wallet,totalTransactionCount})); ///////////////////////////////////
 
-            this.blockchain.addBlock({data: validTransactions});
+		this.blockchain.addBlock({data: validTransactions});
 
-            this.pubsub.broadcastChain();
+		this.pubsub.broadcastChain();
+		console.log(this.transactionPool);
 
-            this.transactionPool.clear();
+		this.transactionPool.clear();
 
  
 	} 

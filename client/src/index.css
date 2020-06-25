@@ -52,6 +52,10 @@ a:hover {
 
 }
 
+.nav {
+    flex-wrap: nowrap;
+}
+
 .navbar,
 .navbar-default {
     background-color: #1A1A1D !important;
@@ -68,6 +72,7 @@ a:hover {
     padding-right: 10% !important; */
     color: #c3073f !important;
     margin-left: 10%;
+    margin-right: 10%;
     font-family: 'Roboto Condensed', sans-serif;    font-size: 1.2em;
 }
 

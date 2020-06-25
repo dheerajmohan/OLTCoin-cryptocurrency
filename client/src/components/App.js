@@ -49,21 +49,21 @@ class App extends Component {
                 <br />
                 <Container>
                         <Row>
-                            <Col md={6}>
+                            <Col xs={8} md={6}>
                                 <span className="keyText">Address </span>
                             </Col>
-                            <Col md={6}>
+                            <Col xs={4} md={6}>
                                 <span className="keyText">Balance </span>
 
                             </Col>
                         </Row>
                         <br />
                         <Row>
-                            <Col md={6}>
+                            <Col xs={8} md={6}>
                             <span className="valueText">{address}</span>
 
                             </Col>
-                            <Col md={6}>
+                            <Col xs={4} md={6}>
                                 <span className="balance">{balance}</span>
                             </Col>
                         </Row>

@@ -48905,18 +48905,22 @@ var App = /*#__PURE__*/function (_Component) {
           fontSize: 100
         }
       }, "OLTCoin"))))), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement(_reactBootstrap.Container, null, _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement(_reactBootstrap.Col, {
+        xs: 8,
         md: 6
       }, _react.default.createElement("span", {
         className: "keyText"
       }, "Address ")), _react.default.createElement(_reactBootstrap.Col, {
+        xs: 4,
         md: 6
       }, _react.default.createElement("span", {
         className: "keyText"
       }, "Balance "))), _react.default.createElement("br", null), _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement(_reactBootstrap.Col, {
+        xs: 8,
         md: 6
       }, _react.default.createElement("span", {
         className: "valueText"
       }, address)), _react.default.createElement(_reactBootstrap.Col, {
+        xs: 4,
         md: 6
       }, _react.default.createElement("span", {
         className: "balance"
@@ -49671,7 +49675,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "38611" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34127" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

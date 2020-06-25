@@ -7,7 +7,10 @@ import Blocks from './components/Blocks';
 import ConductTransaction from './components/ConductTransaction';
 import TransactionPool from './components/TransactionPool';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+
+
 
 render(
     <Router history={history} >

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button } from "react-bootstrap"; 
+import { Button, Card, ListGroup } from "react-bootstrap"; 
 import Transaction from './Transaction';
 
 class Block extends Component {
@@ -24,18 +24,19 @@ class Block extends Component {
                     {
                         data.map(transaction => (
                             <div key={transaction.id}>
-                                <hr />
                                 <Transaction transaction={transaction} />
                             </div>
                         ))
                     }
                     <br />
                     <Button 
+                        className="showButton"
+                        variant="danger"
                         bsStyle="danger" 
                         bsSize="small" 
                         onClick={this.toggleTransaction}
                     >
-                            Show Less
+                            Hide Data
                     </Button> 
                 </div>
                 
@@ -44,13 +45,15 @@ class Block extends Component {
 
         return (
             <div>
-                <div>Data: {dataDisplay}</div>
+                {/* <div>Data: {dataDisplay}</div> */}
                 <Button 
+                    className="showButton"
+                    variant="danger"
                     bsStyle="danger" 
                     bsSize="small" 
                     onClick={this.toggleTransaction}
                 >
-                        Show More
+                        Show Data
                 </Button> 
             </div>
         );
@@ -61,13 +64,20 @@ class Block extends Component {
     render() {
         const {timestamp, hash } = this.props.block;
 
-        const hashDisplay = `${hash.substring(0,15)}...`;
+        const hashDisplay = `${hash.substring(0,45)}...`;
 
         return (
             <div className='Block'>
+                <Card className="block-card" bg="warning">
+                <Card.Header>
                 <div>Hash: {hashDisplay} </div>
                 <div>Timestamp: {new Date(timestamp).toLocaleDateString()} </div>
+                </Card.Header>
+                <Card.Text>
                 {this.displayTransaction}
+                </Card.Text>
+                </Card>
+
             </div>
         );
     }

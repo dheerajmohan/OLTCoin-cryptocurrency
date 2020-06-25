@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Block from './Block';
+import Navigation from "./Navigation";
 
 class Blocks extends Component {
     state = { blocks: [], paginatedId: 1, blocksLength: 0};
@@ -26,10 +27,8 @@ class Blocks extends Component {
 
         return (
             <div>
-                <div>
-                    <Link to='/'>Home</Link>
-                </div>
-                <h3>Blocks</h3>
+                <Navigation/>
+                <h3 className="heading">Blocks</h3>
                 <div>
                     {
                         [...Array(Math.ceil(this.state.blocksLength/5)).keys()].map(key => {
@@ -37,6 +36,7 @@ class Blocks extends Component {
                             return (
                                 <span key={key} onClick={this.fetchPaginatedBlocks(paginatedId)}>
                                     <Button
+                                        variant="danger"
                                         bsSize="small"
                                         bsStyle="danger"
                                     >

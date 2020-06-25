@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Transaction from "./Transaction";
 import { Button } from "react-bootstrap";
 import history from "../history";
+import Navigation from "./Navigation";
 
 const POLL_INTERVAL_MS = 10000;
 
@@ -59,8 +60,8 @@ class TransactionPool extends Component {
         let isPoolNull = this.state;
         return (
             <div className="TransactionPool">
-                <Link to='/'>Home</Link>
-                <h3>Transaction Pool</h3>
+                <Navigation/>
+                <h3 className="heading">Transaction Pool</h3>
                 {
                     Object.values(this.state.transactionPoolMap).map(
                         transaction => {

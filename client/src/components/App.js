@@ -1,6 +1,18 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import logo from '../assets/logo.png';
+import Navigation from "./Navigation";
+import {Container, Row, Col, Jumbotron} from "react-bootstrap";
+
+const ColoredLine = ({ color }) => (
+    <hr
+        style={{
+            color: color,
+            backgroundColor: color,
+            height: 5
+        }}
+    />
+)
 
 class App extends Component {
     state = {
@@ -18,25 +30,44 @@ class App extends Component {
 
         return (
             <div className='App'>
-                <img className='logo' src={logo}></img>
+                <Navigation/>
+                <Container>
+                    <Row>
+                        <Col xs={12} md={6}>
+                            <img className='logo' src={logo}></img>
+                        </Col>
+                        <Col xs={12} md={6}>
+                            <div className = 'title'>
+                                <h2 style={{fontSize: 55}}>Welcome to</h2>  
+                                <h1 style={{fontSize: 100}}>OLTCoin</h1>                
+                            </div>     
+                        </Col>
+                    </Row>
+                </Container>
                 <br />
-                <div>
-                    Welcome to OLTCoin
-                </div>
                 <br />
-                <div>
-                    <Link to='./blocks'>Blocks</Link>
-                </div>
-                <div>
-                    <Link to='./conduct-transaction'>Conduct a Transaction</Link>
-                </div>
-                <div>
-                    <Link to='./transaction-pool'>Transaction Pool</Link>
-                </div>
-                <div className='WalletInfo'>
-                    <div> Address: {address} </div>
-                    <div> Balance: {balance} </div>
-                </div>
+                <br />
+                <Container>
+                        <Row>
+                            <Col md={6}>
+                                <span className="keyText">Address </span>
+                            </Col>
+                            <Col md={6}>
+                                <span className="keyText">Balance </span>
+
+                            </Col>
+                        </Row>
+                        <br />
+                        <Row>
+                            <Col md={6}>
+                            <span className="valueText">{address}</span>
+
+                            </Col>
+                            <Col md={6}>
+                                <span className="balance">{balance}</span>
+                            </Col>
+                        </Row>
+                </Container>
                 <br />
             </div>
         );

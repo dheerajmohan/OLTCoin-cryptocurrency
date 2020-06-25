@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { FormGroup, FormControl, Button } from "react-bootstrap";
+import { Form, FormGroup, FormControl, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import history from "../history";
+import Navigation from "./Navigation";
 
 class ConductTransaction extends Component {
     state = { recipient: '', amount: '', knownAddresses: [] };
@@ -37,45 +38,58 @@ class ConductTransaction extends Component {
     render() {
         return (
             <div className='ConductTransaction'>
-                <Link to='/'>Home</Link>
-                <h3>Conduct a Transaction</h3>
+                <Navigation/>
+                <h3 className="heading">Conduct a Transaction</h3>
                 <br />
-                <h4>Known Addresses</h4>
+                <h4 className="keyText">Known Addresses</h4>
                 {
                     this.state.knownAddresses.map(knownAddress => {
                         return (
                             <div key={knownAddress}>
-                                <div>{knownAddress}</div> 
+                                <div className="valueText">{knownAddress}</div> 
                                 <br />
                             </div>
                         );
                     })
                 }
                 <br />
-                <FormGroup>
-                    <FormControl 
+                <Form className="transactionForm">
+                    <Form.Group>
+                        <Form.Label>Recipient Address</Form.Label>
+                        <FormControl 
                         input = 'text'
-                        placeholder = 'recipient'
+                        placeholder = 'Public address of recipient'
                         value = {this.state.recipient}
                         onChange = {this.updateRecipient}
-                    />
-                </FormGroup>
-                <FormGroup>
-                    <FormControl 
+                        />                        
+                        <Form.Text className="text-muted">
+                        You should not enter your own address
+                        </Form.Text>
+                    </Form.Group>
+
+                    <Form.Group>
+                        <Form.Label>Transaction Amount</Form.Label>
+                        <FormControl 
                         input = 'number'
-                        placeholder = 'amount'
+                        placeholder = 'Amout'
                         value = {this.state.amount}
                         onChange = {this.updateAmount}
-                    />
-                </FormGroup>
-                <div>
+                        />                      
+                        <Form.Text className="text-muted">
+                        Enter an amount greater than zero
+                        </Form.Text>
+                    </Form.Group>
+
+                    <div>
                     <Button 
                         bsStyle="danger"
                         onClick = {this.conductTransaction}
                     >
                         Submit
                     </Button>
-                </div>
+                    </div>
+                </Form>
+
             </div>
         );
     }

@@ -1,16 +1,21 @@
 body {
-    background-color: #444444;
+    background-color: #1A1A1D;
     color: #ffffff;
     text-align: center;
     font-size: 20px;
     font-family: 'Quicksand';
-    padding-top: 5%;
+    /* padding-top: 5%; */
     word-wrap: break-word;
+    margin: 0px !important;
+}
+
+.root {
+    margin: 0px;
 }
 
 .App {
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-direction: column; */
     align-items: center;
 }
 
@@ -25,20 +30,111 @@ body {
 }
 
 .Block {
-    border: 1px solid #ffffff;
-    padding: 5%;
     margin: 2%;
 }
 
 .Transaction {
-    padding: 5%;
+    padding: 1%;
 }
 
 .ConductTransaction, .TransactionPool {
-    margin: 10%;
+
 }
 
-a, a:hover {
-    color: #e66;
-    text-decoration: underline;
+a {
+    color: #959BB1;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #DCDEE5;
+    text-decoration: none;
+
+}
+
+.navbar,
+.navbar-default {
+    background-color: #1A1A1D !important;
+    color: black !important;
+    text-align: center !important;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-bottom: 5%;
+    margin-left: 5%;
+}
+
+.nav-item {
+    /* padding-left: 10% !important;
+    padding-right: 10% !important; */
+    color: #c3073f !important;
+    margin-left: 10%;
+    font-family: 'Roboto Condensed', sans-serif;    font-size: 1.2em;
+}
+
+.navbar-brand {
+    font-family: 'Anton', sans-serif;    
+    font-size: 1.2em;
+    color: #F08119 !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+}
+
+.title {
+    font-family: 'Playfair Display', serif;
+
+    color: #D46D0C;
+}
+
+.heading {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+    color: #D46D0C;
+}
+
+.keyText {
+    font-family: 'Oswald', sans-serif;
+    color: #A39600;
+    font-size: 1.2em;
+}
+
+.valueText {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #B8B8B8;
+}
+
+.balance {
+    text-align: left;
+    font-size: 2em;
+    color: #B8B8B8;
+
+}
+
+.block-card {
+    margin: 0 auto;
+    width: 75%;
+    background-color: #E57710 !important;
+}
+
+.transaction-card {
+    margin: 0 auto;
+    width: 75%;
+    background-color: #D26D0F !important;
+}
+
+.showButton {
+    margin: 2% auto;
+}
+
+.transactionForm {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.form-label {
+    margin-left: 0px !important;
+    font-family: 'Oswald', sans-serif;
+    color: #A39600;
+    font-size: 1em;
 }

@@ -4,15 +4,6 @@ import logo from '../assets/logo.png';
 import Navigation from "./Navigation";
 import {Container, Row, Col, Jumbotron} from "react-bootstrap";
 
-const ColoredLine = ({ color }) => (
-    <hr
-        style={{
-            color: color,
-            backgroundColor: color,
-            height: 5
-        }}
-    />
-)
 
 class App extends Component {
     state = {

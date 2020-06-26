@@ -48832,17 +48832,6 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var ColoredLine = function ColoredLine(_ref) {
-  var color = _ref.color;
-  return _react.default.createElement("hr", {
-    style: {
-      color: color,
-      backgroundColor: color,
-      height: 5
-    }
-  });
-};
-
 var App = /*#__PURE__*/function (_Component) {
   _inherits(App, _Component);
 

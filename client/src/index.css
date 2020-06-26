@@ -56,6 +56,18 @@ a:hover {
     flex-wrap: nowrap;
 } */
 
+@media only screen and (max-width: 600px) {
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+    }
+}
+
+.nav {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
 .navbar,
 .navbar-default {
     background-color: #1A1A1D !important;

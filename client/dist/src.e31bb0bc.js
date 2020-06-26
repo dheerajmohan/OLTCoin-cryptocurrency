@@ -48785,7 +48785,11 @@ var Navigation = /*#__PURE__*/function (_Component) {
         to: "./conduct-transaction"
       }, "TRANSACT")), _react.default.createElement(_reactBootstrap.Nav.Item, null, _react.default.createElement(_reactRouterDom.Link, {
         to: "./transaction-pool"
-      }, "POOL"))))));
+      }, "POOL")), _react.default.createElement(_reactBootstrap.Nav.Item, null, _react.default.createElement(_reactRouterDom.Link, {
+        to: "./help"
+      }, _react.default.createElement(_reactBootstrap.Button, {
+        variant: "warning"
+      }, "HELP"), ' '))))));
     }
   }]);
 
@@ -48858,7 +48862,8 @@ var App = /*#__PURE__*/function (_Component) {
     }
 
     return _possibleConstructorReturn(_this, (_temp = _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
-      walletInfo: {}
+      walletInfo: {},
+      total: {}
     }, _temp));
   }
 
@@ -48874,6 +48879,13 @@ var App = /*#__PURE__*/function (_Component) {
           walletInfo: json
         });
       });
+      fetch("".concat(document.location.origin, "/api/total-supply")).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        return _this2.setState({
+          total: json
+        });
+      }); // .then(console.log(total));
     }
   }, {
     key: "render",
@@ -48881,6 +48893,7 @@ var App = /*#__PURE__*/function (_Component) {
       var _this$state$walletInf = this.state.walletInfo,
           address = _this$state$walletInf.address,
           balance = _this$state$walletInf.balance;
+      var total = this.state.total.total;
       return _react.default.createElement("div", {
         className: "App"
       }, _react.default.createElement(_Navigation.default, null), _react.default.createElement(_reactBootstrap.Container, null, _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement(_reactBootstrap.Col, {
@@ -48926,6 +48939,21 @@ var App = /*#__PURE__*/function (_Component) {
       }, balance, ' ', _react.default.createElement("img", {
         className: "oltBalance",
         src: _olt.default
+      }))))), _react.default.createElement("br", null), _react.default.createElement(_reactBootstrap.Container, null, _react.default.createElement(_reactBootstrap.Row, {
+        className: "totalRow"
+      }, _react.default.createElement(_reactBootstrap.Col, {
+        xs: 12,
+        md: 12
+      }, _react.default.createElement("span", {
+        className: "keyText"
+      }, "Total Supply")), _react.default.createElement(_reactBootstrap.Col, {
+        xs: 12,
+        md: 12
+      }, _react.default.createElement("span", {
+        className: "balance"
+      }, total, ' ', _react.default.createElement("img", {
+        className: "oltBalance",
+        src: _olt.default
       }))))), _react.default.createElement("br", null));
     }
   }]);
@@ -48935,7 +48963,9 @@ var App = /*#__PURE__*/function (_Component) {
 
 var _default = App;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/es/index.js","../assets/logo.png":"assets/logo.png","../assets/olt.png":"assets/olt.png","./Navigation":"components/Navigation.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js"}],"components/Transaction.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/es/index.js","../assets/logo.png":"assets/logo.png","../assets/olt.png":"assets/olt.png","./Navigation":"components/Navigation.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js"}],"assets/olt2.png":[function(require,module,exports) {
+module.exports = "/olt2.e2904935.png";
+},{}],"components/Transaction.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -48946,6 +48976,8 @@ exports.default = void 0;
 var _react = _interopRequireDefault(require("react"));
 
 var _reactBootstrap = require("react-bootstrap");
+
+var _olt = _interopRequireDefault(require("../assets/olt2.png"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -48959,16 +48991,38 @@ var Transaction = function Transaction(_ref) {
   }, _react.default.createElement(_reactBootstrap.Card, {
     className: "transaction-card",
     bg: "warning"
-  }, _react.default.createElement(_reactBootstrap.Card.Header, null, _react.default.createElement("div", null, "From: ", "".concat(input.address.substring(0, 30), "..."), " | Balance: ", input.amount, " ")), _react.default.createElement(_reactBootstrap.Card.Text, null, recipients.map(function (recipient) {
+  }, _react.default.createElement(_reactBootstrap.Card.Header, null, _react.default.createElement("div", null, _react.default.createElement("span", {
+    className: "smallKey"
+  }, "From: "), _react.default.createElement("span", {
+    className: "valueText2"
+  }, " ", "".concat(input.address.substring(0, 30), "..."), " "), _react.default.createElement("span", {
+    className: "smallKey"
+  }, "| Balance: "), _react.default.createElement("span", {
+    className: "valueText2"
+  }, " ", input.amount, _react.default.createElement("span", null, ' ', _react.default.createElement("img", {
+    className: "transOlt",
+    src: _olt.default
+  }))))), _react.default.createElement(_reactBootstrap.Card.Text, null, recipients.map(function (recipient) {
     return _react.default.createElement("div", {
       key: recipient
-    }, "To: ", "".concat(recipient.substring(0, 30), "..."), " | Sent: ", outputMap[recipient]);
+    }, _react.default.createElement("span", {
+      className: "smallKey"
+    }, "To: "), _react.default.createElement("span", {
+      className: "valueText2"
+    }, " ", "".concat(recipient.substring(0, 30), "..."), " "), _react.default.createElement("span", {
+      className: "smallKey"
+    }, " | Sent:  "), _react.default.createElement("span", {
+      className: "valueText2"
+    }, " ", outputMap[recipient], _react.default.createElement("span", null, ' ', _react.default.createElement("img", {
+      className: "transOlt",
+      src: _olt.default
+    }))));
   }))));
 };
 
 var _default = Transaction;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js"}],"components/Block.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","../assets/olt2.png":"assets/olt2.png"}],"components/Block.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -49047,7 +49101,15 @@ var Block = /*#__PURE__*/function (_Component) {
       }, _react.default.createElement(_reactBootstrap.Card, {
         border: "warning",
         className: "block-card"
-      }, _react.default.createElement(_reactBootstrap.Card.Header, null, _react.default.createElement("div", null, "Hash: ", hashDisplay, " "), _react.default.createElement("div", null, "Timestamp: ", new Date(timestamp).toLocaleDateString(), " ")), _react.default.createElement(_reactBootstrap.Card.Text, null, this.displayTransaction)));
+      }, _react.default.createElement(_reactBootstrap.Card.Header, null, _react.default.createElement("div", null, _react.default.createElement("span", {
+        className: "smallKey"
+      }, "Hash: "), _react.default.createElement("span", {
+        className: "valueText2"
+      }, " ", hashDisplay, "  ")), _react.default.createElement("div", null, _react.default.createElement("span", {
+        className: "smallKey"
+      }, "Timestamp: "), _react.default.createElement("span", {
+        className: "valueText2"
+      }, " ", new Date(timestamp).toLocaleDateString(), "  "))), _react.default.createElement(_reactBootstrap.Card.Text, null, this.displayTransaction)));
     }
   }, {
     key: "displayTransaction",
@@ -49751,7 +49813,88 @@ var Login = /*#__PURE__*/function (_Component) {
 ;
 var _default = Login;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","react-router-dom":"../../node_modules/react-router-dom/es/index.js","../history":"history.js","./Navigation":"components/Navigation.js","../assets/olt.png":"assets/olt.png","../assets/logo.png":"assets/logo.png"}],"index.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","react-router-dom":"../../node_modules/react-router-dom/es/index.js","../history":"history.js","./Navigation":"components/Navigation.js","../assets/olt.png":"assets/olt.png","../assets/logo.png":"assets/logo.png"}],"components/Help.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactBootstrap = require("react-bootstrap");
+
+var _reactRouterDom = require("react-router-dom");
+
+var _history = _interopRequireDefault(require("../history"));
+
+var _Navigation = _interopRequireDefault(require("./Navigation"));
+
+var _olt = _interopRequireDefault(require("../assets/olt.png"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var Help = /*#__PURE__*/function (_Component) {
+  _inherits(Help, _Component);
+
+  var _super = _createSuper(Help);
+
+  function Help() {
+    _classCallCheck(this, Help);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(Help, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement("div", {
+        className: "ConductTransaction"
+      }, _react.default.createElement(_Navigation.default, null), _react.default.createElement("h3", {
+        className: "heading"
+      }, "Help"), _react.default.createElement("br", null), _react.default.createElement("p", {
+        className: "Help"
+      }, "New to OLTcoin? Spare a minute!", _react.default.createElement("ul", null, _react.default.createElement("li", null, "The minimum transaction amount is 1 ", _react.default.createElement("img", {
+        className: "helpBalance",
+        src: _olt.default
+      }), " "), _react.default.createElement("li", null, "Unit"), _react.default.createElement("li", null, "Each transaction costs you 2 OLT"), _react.default.createElement("li", null, "On mining transactions, the miner gets the corresponding transaction fee and also an additional 50 OLtcoins. Each miner is rewarded 50 oltcoins by the blockchain and alsogets reward to the number of transactions added and also, an additional 50 oltcoins"), _react.default.createElement("li", null, "Unit"), _react.default.createElement("li", null, "Unit"))));
+    }
+  }]);
+
+  return Help;
+}(_react.Component);
+
+;
+var _default = Help;
+exports.default = _default;
+},{"react":"../../node_modules/react/index.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","react-router-dom":"../../node_modules/react-router-dom/es/index.js","../history":"history.js","./Navigation":"components/Navigation.js","../assets/olt.png":"assets/olt.png"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -49776,6 +49919,8 @@ require("./index.css");
 
 var _Login = _interopRequireDefault(require("./components/Login"));
 
+var _Help = _interopRequireDefault(require("./components/Help"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _reactDom.render)(_react.default.createElement(_reactRouterDom.Router, {
@@ -49797,8 +49942,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 }), _react.default.createElement(_reactRouterDom.Route, {
   path: "/transaction-pool",
   component: _TransactionPool.default
+}), _react.default.createElement(_reactRouterDom.Route, {
+  exact: true,
+  path: "/help",
+  component: _Help.default
 }))), document.getElementById('root'));
-},{"react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","react-router-dom":"../../node_modules/react-router-dom/es/index.js","./history":"history.js","./components/App":"components/App.js","./components/Blocks":"components/Blocks.js","./components/ConductTransaction":"components/ConductTransaction.js","./components/TransactionPool":"components/TransactionPool.js","bootstrap/dist/css/bootstrap.min.css":"../../node_modules/bootstrap/dist/css/bootstrap.min.css","./index.css":"index.css","./components/Login":"components/Login.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-dom":"../../node_modules/react-dom/index.js","react-router-dom":"../../node_modules/react-router-dom/es/index.js","./history":"history.js","./components/App":"components/App.js","./components/Blocks":"components/Blocks.js","./components/ConductTransaction":"components/ConductTransaction.js","./components/TransactionPool":"components/TransactionPool.js","bootstrap/dist/css/bootstrap.min.css":"../../node_modules/bootstrap/dist/css/bootstrap.min.css","./index.css":"index.css","./components/Login":"components/Login.js","./components/Help":"components/Help.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

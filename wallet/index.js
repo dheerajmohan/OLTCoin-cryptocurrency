@@ -3,10 +3,23 @@ const { ec,cryptoHash } = require('../util');
 const Transaction = require('./transaction')
 
 class Wallet {
-	constructor() {
-		this.balance = STARTING_BALANCE;
+	constructor({totalSupply, pubsub}) {
+
+		this.pubsub = pubsub;
+
+		if ( totalSupply.currentSupply >= STARTING_BALANCE ) {
+			this.balance = STARTING_BALANCE;
+            		totalSupply.updateSupply(totalSupply.currentSupply - STARTING_BALANCE);
+            		this.pubsub.broadcastSupply(totalSupply.currentSupply - STARTING_BALANCE);
+            		console.log('TotalSupply', totalSupply.currentSupply);
+        	}
+
+        	else {
+            		this.balance = 0 ;
+        	}
 
 		this.keyPair = ec.genKeyPair();
+
 		this.publicKey = this.keyPair.getPublic().encode('hex');
 	}
 

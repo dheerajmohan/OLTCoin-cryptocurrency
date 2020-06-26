@@ -74,12 +74,26 @@ const { REWARD_INPUT, MINING_REWARD} = require( '../config');
  		return true;
  	}
 
- 	static rewardTransaction({minerWallet,totalTransactionCount})
- 	{
- 		return new this ({
- 			input : REWARD_INPUT,
- 			outputMap :{ [minerWallet.publicKey]:MINING_REWARD + totalTransactionCount*2 } ///////////////////////////////////////////
- 		});
+ 	static rewardTransaction( {minerWallet, totalTransactionCount, totalSupply }) {
+        
+        	let miningReward;
+
+        	if (totalSupply.currentSupply >= MINING_REWARD) {
+            		miningReward = MINING_REWARD;
+            		totalSupply.updateSupply(totalSupply.currentSupply - MINING_REWARD);
+            		minerWallet.pubsub.broadcastSupply(totalSupply.currentSupply);
+        	}
+
+	        else {
+	            miningReward = 0;
+	        }
+
+	        const finalReward = miningReward + totalTransactionCount*2;
+
+	        return new this({
+	            input : REWARD_INPUT,
+	            outputMap : {[minerWallet.publicKey] : finalReward }
+	        });
  	}
  }
 

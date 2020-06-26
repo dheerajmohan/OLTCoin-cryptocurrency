@@ -44,6 +44,19 @@ body {
     margin-bottom: 5px;
 }
 
+.helpBalance {
+
+    width: 0.6em !important;
+    height: auto !important;  
+    margin-bottom: 2px;
+}
+
+.transOlt {
+
+    width: 0.6em !important;
+    height: auto !important;  
+    margin-bottom: 2px;
+}
 
 .helper {
     display: inline-block;
@@ -125,6 +138,11 @@ a:hover {
     .nav {
         display: flex !important;
     }
+
+
+.totalRow {
+    padding-left: 20%;
+}
   }
 
 .navbar-nav {
@@ -190,11 +208,23 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.2em;
 }
 
+.smallKey {
+    font-family: 'Oswald', sans-serif;
+    /* color: #A39600; */
+    font-size: 1em;
+}
+
 .valueText {
     font-family: 'Roboto Condensed', sans-serif;
     color: #B8B8B8;
 }
 
+.valueText2 {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #DBDFE6;
+}
+
+DBDFE6
 .balance {
     text-align: left;
     font-size: 2em;
@@ -238,6 +268,14 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Oswald', sans-serif;
     color: #A39600;
     font-size: 1em;
+}
+
+.Help {
+    padding: 2% 10%;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    color: #C3CBD5;
+
 }
 
 /*# sourceMappingURL=/src.e31bb0bc.css.map */

@@ -9,17 +9,25 @@ import {Container, Row, Col, Jumbotron} from "react-bootstrap";
 
 class App extends Component {
     state = {
-        walletInfo: {}
+        walletInfo: {}, total: {}    
     };
 
     componentDidMount() {
         fetch(`${document.location.origin}/api/wallet-info`)
             .then(response => response.json())
             .then(json => this.setState({walletInfo: json}));
+
+       fetch(`${document.location.origin}/api/total-supply`)
+            .then(response => response.json())
+            .then(json => this.setState({total: json}));
+            // .then(console.log(total));
+        
+        
     }
 
     render() {
         const {address, balance} = this.state.walletInfo;
+        const {total} = this.state.total;
 
         return (
             <div className='App'>
@@ -60,6 +68,23 @@ class App extends Component {
                             <Col xs={5} md={6}>
                                 <span className="balance">
                                     {balance}{' '} 
+                                    <img  className='oltBalance' src={olt}></img>
+                                </span>                                
+
+
+                            </Col>
+                        </Row>
+                </Container>
+                <br />
+                <Container>
+                        <Row className="totalRow">
+                            <Col xs={12} md={12}>
+                            <span className="keyText">Total Supply</span>
+
+                            </Col>
+                            <Col xs={12} md={12}>
+                                <span className="balance">
+                                    {total}{' '} 
                                     <img  className='oltBalance' src={olt}></img>
                                 </span>                                
 

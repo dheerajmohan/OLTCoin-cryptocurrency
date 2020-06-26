@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Card, ListGroup } from "react-bootstrap"; 
+import olt2 from '../assets/olt2.png';
 
 const Transaction = ({transaction}) => {
     const { input, outputMap } = transaction;
@@ -9,14 +10,27 @@ const Transaction = ({transaction}) => {
         <div className='Transaction'>
                 <Card className="transaction-card" bg="warning">
                 <Card.Header>
-                <div>From: {`${input.address.substring(0,30)}...`} | Balance: {input.amount} </div>
+                <div>
+                    <span className="smallKey">From: </span>
+                    <span className="valueText2"> {`${input.address.substring(0,30)}...`} </span>
+                    <span className="smallKey">| Balance: </span>
+                    <span className="valueText2"> {input.amount} 
+                        <span>{' '}<img  className='transOlt' src={olt2}></img></span>  
+                    </span>
+
+                </div>
 
                 </Card.Header>
                 <Card.Text>
                 {
                     recipients.map(recipient => (
                             <div key={recipient}>
-                                To: {`${recipient.substring(0,30)}...`} | Sent: {outputMap[recipient]}
+                                <span className="smallKey">To: </span>
+                                <span className="valueText2"> {`${recipient.substring(0,30)}...`} </span>
+                                <span className="smallKey"> | Sent:  </span>
+                                <span className="valueText2"> {outputMap[recipient]}
+                                    <span>{' '}<img  className='transOlt' src={olt2}></img></span>  
+                                 </span>                                
                             </div>
                     ))
                 }

@@ -70,8 +70,15 @@ class Block extends Component {
             <div className='Block'>
                 <Card border="warning" className="block-card">
                 <Card.Header>
-                <div>Hash: {hashDisplay} </div>
-                <div>Timestamp: {new Date(timestamp).toLocaleDateString()} </div>
+                <div>
+                    <span className="smallKey">Hash: </span>
+                    <span className="valueText2"> {hashDisplay}  </span>
+                </div>
+
+                <div>
+                    <span className="smallKey">Timestamp: </span>
+                    <span className="valueText2"> {new Date(timestamp).toLocaleDateString()}  </span>
+                </div>
                 </Card.Header>
                 <Card.Text>
                 {this.displayTransaction}

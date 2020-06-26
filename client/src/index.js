@@ -10,6 +10,7 @@ import TransactionPool from './components/TransactionPool';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import Login from './components/Login';
+import Help from './components/Help';
 
 
 
@@ -21,7 +22,7 @@ render(
             <Route path='/blocks' component={Blocks} />
             <Route path='/conduct-transaction' component={ConductTransaction} />
             <Route path='/transaction-pool' component={TransactionPool} />
-
+            <Route exact path='/help' component={Help} />
         </Switch>
     </Router>,
     document.getElementById('root')

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import logo from '../assets/logo.png';
-import {Navbar, Nav, NavItem, MenuItem} from "react-bootstrap";
+import {Button, Navbar, Nav, NavItem, MenuItem} from "react-bootstrap";
 import olt from '../assets/olt.png';
 
 
@@ -30,8 +30,14 @@ import olt from '../assets/olt.png';
                         <Nav.Item>
                             <Link to='./transaction-pool'>POOL</Link>
 
-                        </Nav.Item>                    
+                        </Nav.Item> 
+                        <Nav.Item>
+                            <Link to='./help'>
+                                <Button variant="warning">HELP</Button>{' '}
+                            </Link>
+                        </Nav.Item>                   
                     </Nav>
+
                 </Navbar.Collapse>
                 </Navbar>
             </div>

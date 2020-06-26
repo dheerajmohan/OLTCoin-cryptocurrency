@@ -3,11 +3,12 @@ const Transaction = require('../wallet/transaction');
 
 class TransactionMiner {
 
-	constructor({ blockchain,transactionPool,wallet,pubsub }) {
+	constructor({ blockchain,transactionPool,wallet,pubsub, totalSupply }) {
 		this.blockchain = blockchain;
 		this.transactionPool = transactionPool;
 		this.wallet = wallet;
 		this.pubsub = pubsub;
+        	this.totalSupply = totalSupply;
 
 	}
 
@@ -25,8 +26,10 @@ class TransactionMiner {
 		}
 
 
-		validTransactions.push(
-			Transaction.rewardTransaction({minerWallet:this.wallet,totalTransactionCount})); ///////////////////////////////////
+        	//generate miner reward
+        	validTransactions.push(
+            		Transaction.rewardTransaction({ minerWallet : this.wallet, totalTransactionCount, totalSupply : this.totalSupply})
+        	);
 
 		this.blockchain.addBlock({data: validTransactions});
 

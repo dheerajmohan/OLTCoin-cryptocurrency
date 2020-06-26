@@ -7,6 +7,7 @@ const PubSub = require('./app/pubsub');
 const TransactionPool = require('./wallet/transaction-pool');
 const Wallet = require('./wallet')
 const TransactionMiner = require('./app/transaction-miner');
+const TotalSupply = require('./wallet/total-supply')
 
 const isDevelopment = process.env.ENV === 'development';
 
@@ -20,11 +21,12 @@ const ROOT_NODE_ADDRESS = `http://localhost:${DEFAULT_PORT}`;
 
 
 const app = express();
+const totalSupply = new TotalSupply();
 const blockchain = new Blockchain();
-const wallet = new Wallet();
 const transactionPool = new TransactionPool();
-const pubsub = new PubSub({ blockchain, transactionPool, redisUrl: REDIS_URL });
-const transactionMiner = new TransactionMiner({ blockchain, transactionPool, wallet, pubsub });
+const pubsub = new PubSub({ blockchain, transactionPool, redisUrl: REDIS_URL, totalSupply });
+const wallet = new Wallet({ totalSupply, pubsub });
+const transactionMiner = new TransactionMiner({ blockchain, transactionPool, wallet, pubsub, totalSupply });
 
 
 
@@ -67,6 +69,13 @@ app.post('/api/mine', (req, res) => {
 
 app.post('/api/transact', (req, res) => {
     const { amount, recipient }=  req.body;
+    if (!recipient) { //New addition
+        res.json({type : 'error', message : 'No recipient defined'});
+    }
+
+    if (!amount) { //New addition
+        res.json({type : 'error', message : 'No recipient defined'});
+    }
 
     let transaction = transactionPool
     .existingTransaction({ inputAddress : wallet.publicKey});
@@ -107,6 +116,12 @@ app.get('/api/wallet-info', (req, res) => {
         address,
         balance : Wallet.calculateBalance({ chain: blockchain.chain, address })
     });
+});
+
+app.get('/api/total-supply', (req, res) => {
+
+    res.json({total: totalSupply.currentSupply});
+    
 });
 
 app.get('/api/known-addresses', (req, res) => {
@@ -150,11 +165,21 @@ const syncWithRootState = () => {
         }
 
     });
+
+    request({ url: `${ROOT_NODE_ADDRESS}/api/total-supply` }, (error, response, body) => {
+        if(!error && response.statusCode === 200){
+            const rootTotalSupply = JSON.parse(body);
+
+            console.log('update totalSupply on a sync with', rootTotalSupply);
+            totalSupply.updateSupply(rootTotalSupply["total"]);  
+        }
+
+    });
 };
 
 if(isDevelopment) {
-    const walletFoo = new Wallet();
-    const walletBar = new Wallet();
+    const walletFoo = new Wallet({ totalSupply, pubsub });
+    const walletBar = new Wallet({ totalSupply, pubsub });
 
     const generateWalletTransaction = ({ wallet, recipient, amount }) => {
         const transaction = wallet.createTransaction({

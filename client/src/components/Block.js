@@ -68,7 +68,7 @@ class Block extends Component {
 
         return (
             <div className='Block'>
-                <Card className="block-card" bg="warning">
+                <Card border="warning" className="block-card">
                 <Card.Header>
                 <div>Hash: {hashDisplay} </div>
                 <div>Timestamp: {new Date(timestamp).toLocaleDateString()} </div>

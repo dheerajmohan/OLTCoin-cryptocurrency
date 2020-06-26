@@ -26,13 +26,13 @@ body {
 }
 
 .olt {
-    width: 2em !important;
+    width: 0.8em !important;
     height: auto !important;
 }
 
 .oltBalance {
 
-    width: 1em !important;
+    width: 0.5em !important;
     height: auto !important;  
     margin-bottom: 5px;
 }
@@ -193,13 +193,16 @@ h1, h2, h3, h4, h5, h6 {
 .block-card {
     margin: 0 auto;
     width: 75%;
-    background-color: #E57710 !important;
+    /* background-color: #E57710 !important; */
+    background-color: transparent !important;
 }
 
 .transaction-card {
     margin: 0 auto;
     width: 75%;
-    background-color: #D26D0F !important;
+    background-color: #DB3A34 !important;
+    /* background-color: transparent !important; */
+
 }
 
 .showButton {

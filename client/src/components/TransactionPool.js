@@ -78,6 +78,7 @@ class TransactionPool extends Component {
                 {
                     this.state.nullMap ? null : 
                     <Button 
+                    variant="danger"
                     bsStyle="danger"
                     onClick = {this.fetchMineTransactions}
                     >

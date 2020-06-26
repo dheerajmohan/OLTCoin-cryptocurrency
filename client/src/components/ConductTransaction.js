@@ -82,6 +82,7 @@ class ConductTransaction extends Component {
 
                     <div>
                     <Button 
+                        variant="danger"
                         bsStyle="danger"
                         onClick = {this.conductTransaction}
                     >

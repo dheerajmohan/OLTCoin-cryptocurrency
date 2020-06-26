@@ -49045,8 +49045,8 @@ var Block = /*#__PURE__*/function (_Component) {
       return _react.default.createElement("div", {
         className: "Block"
       }, _react.default.createElement(_reactBootstrap.Card, {
-        className: "block-card",
-        bg: "warning"
+        border: "warning",
+        className: "block-card"
       }, _react.default.createElement(_reactBootstrap.Card.Header, null, _react.default.createElement("div", null, "Hash: ", hashDisplay, " "), _react.default.createElement("div", null, "Timestamp: ", new Date(timestamp).toLocaleDateString(), " ")), _react.default.createElement(_reactBootstrap.Card.Text, null, this.displayTransaction)));
     }
   }, {
@@ -49367,6 +49367,7 @@ var ConductTransaction = /*#__PURE__*/function (_Component) {
       }), _react.default.createElement(_reactBootstrap.Form.Text, {
         className: "text-muted"
       }, "Enter an amount greater than zero")), _react.default.createElement("div", null, _react.default.createElement(_reactBootstrap.Button, {
+        variant: "danger",
         bsStyle: "danger",
         onClick: this.conductTransaction
       }, "Submit"))));
@@ -49519,6 +49520,7 @@ var TransactionPool = /*#__PURE__*/function (_Component) {
           transaction: transaction
         }));
       }), _react.default.createElement("hr", null), this.state.nullMap ? null : _react.default.createElement(_reactBootstrap.Button, {
+        variant: "danger",
         bsStyle: "danger",
         onClick: this.fetchMineTransactions
       }, "Mine the Transactions"));

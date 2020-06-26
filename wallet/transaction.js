@@ -30,6 +30,15 @@ const { REWARD_INPUT, MINING_REWARD} = require( '../config');
 
  	update({senderWallet,recipient,amount}){
 
+		if(!amount || amount<1) {
+            throw new Error('Invalid amount');  //new addition
+        }
+
+        if(recipient === senderWallet.publicKey) {
+			throw new Error('Recipient address is same as yours'); //new addition
+			return;
+		}
+		
  		if(amount + 2 > this.outputMap[senderWallet.publicKey])  {		///////////////////////////////////////////// delete +2
  			throw new Error('Amount exceeds balance');
  		}

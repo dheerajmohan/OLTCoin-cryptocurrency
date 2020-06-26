@@ -71,10 +71,12 @@ app.post('/api/transact', (req, res) => {
     const { amount, recipient }=  req.body;
     if (!recipient) { //New addition
         res.json({type : 'error', message : 'No recipient defined'});
+        return res.status(400).json({type : 'error', message : error.message});
     }
 
     if (!amount) { //New addition
-        res.json({type : 'error', message : 'No recipient defined'});
+        res.json({type : 'error', message : 'Invalid Amount'});
+        return res.status(400).json({type : 'error', message : error.message});
     }
 
     let transaction = transactionPool

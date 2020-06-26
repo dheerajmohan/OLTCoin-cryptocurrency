@@ -79,7 +79,7 @@ class App extends Component {
                 <Container>
                         <Row className="totalRow">
                             <Col xs={12} md={12}>
-                            <span className="keyText">Total Supply</span>
+                            <span className="keyText">OLTCoins to be Mined</span>
 
                             </Col>
                             <Col xs={12} md={12}>

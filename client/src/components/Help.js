@@ -12,17 +12,15 @@ class Help extends Component {
         return (
             <div className='ConductTransaction'>
                 <Navigation/>
-                <h3 className="heading">Help</h3>
+                <h3 className="heading">OLTCoin Guidelines</h3>
                 <br />
                 <p className="Help">
                     New to OLTcoin? Spare a minute!
                     <ul>
                         <li>The minimum transaction amount is 1 <img  className='helpBalance' src={olt}></img> </li>
-                        <li>Unit</li>
-                        <li>Each transaction costs you 2 OLT</li>
-                        <li>On mining transactions, the miner gets the corresponding transaction fee and also an additional 50 OLtcoins. Each miner is rewarded 50 oltcoins by the blockchain and alsogets reward to the number of transactions added and also, an additional 50 oltcoins</li>
-                        <li>Unit</li>
-                        <li>Unit</li>
+                        <li>Each transaction costs you 2 <img  className='helpBalance' src={olt}></img> </li>
+                        <li>On mining transactions, you get 50 <img  className='helpBalance' src={olt}></img> block reward in addition to the transaction fee corresponding to the mined block. </li>
+                        <li>A new user is given 1000 <img  className='helpBalance' src={olt}></img>. This provision and block reward will be unavailable once the total supply of OLTcoins gets depleted </li>
                     </ul>
                 </p>
 

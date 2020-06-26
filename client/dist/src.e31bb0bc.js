@@ -48946,7 +48946,7 @@ var App = /*#__PURE__*/function (_Component) {
         md: 12
       }, _react.default.createElement("span", {
         className: "keyText"
-      }, "Total Supply")), _react.default.createElement(_reactBootstrap.Col, {
+      }, "OLTCoins to be Mined")), _react.default.createElement(_reactBootstrap.Col, {
         xs: 12,
         md: 12
       }, _react.default.createElement("span", {
@@ -49352,35 +49352,58 @@ var ConductTransaction = /*#__PURE__*/function (_Component) {
     return _possibleConstructorReturn(_this, (_temp = _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
       recipient: '',
       amount: '',
-      knownAddresses: []
+      knownAddresses: [],
+      errorText: '',
+      isValid: false
     }, _this.updateRecipient = function (event) {
       _this.setState({
         recipient: event.target.value
       });
     }, _this.updateAmount = function (event) {
-      _this.setState({
-        amount: Number(event.target.value)
-      });
+      var val = event.target.value;
+
+      if (isNaN(val)) {
+        _this.setState({
+          amount: val,
+          errorText: 'Enter a number',
+          isValid: false
+        });
+      } else if (val <= 0) {
+        _this.setState({
+          amount: val,
+          errorText: 'Enter a number greater than zero',
+          isValid: false
+        });
+      } else {
+        _this.setState({
+          amount: Number(event.target.value),
+          errorText: '',
+          isValid: true
+        });
+      }
     }, _this.conductTransaction = function () {
       var _this$state = _this.state,
           recipient = _this$state.recipient,
           amount = _this$state.amount;
-      fetch("".concat(document.location.origin, "/api/transact"), {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json'
-        },
-        body: JSON.stringify({
-          recipient: recipient,
-          amount: amount
-        })
-      }).then(function (response) {
-        return response.json();
-      }).then(function (json) {
-        alert(json.message || json.type);
 
-        _history.default.push('/transaction-pool');
-      });
+      if (_this.state.isValid && _this.state.recipient != '') {
+        fetch("".concat(document.location.origin, "/api/transact"), {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json'
+          },
+          body: JSON.stringify({
+            recipient: recipient,
+            amount: amount
+          })
+        }).then(function (response) {
+          return response.json();
+        }).then(function (json) {
+          alert(json.message || json.type);
+
+          _history.default.push('/transaction-pool');
+        });
+      }
     }, _temp));
   }
 
@@ -49419,16 +49442,18 @@ var ConductTransaction = /*#__PURE__*/function (_Component) {
         placeholder: "Public address of recipient",
         value: this.state.recipient,
         onChange: this.updateRecipient
-      }), _react.default.createElement(_reactBootstrap.Form.Text, {
-        className: "text-muted"
-      }, "You should not enter your own address")), _react.default.createElement(_reactBootstrap.Form.Group, null, _react.default.createElement(_reactBootstrap.Form.Label, null, "Transaction Amount"), _react.default.createElement(_reactBootstrap.FormControl, {
+      })), _react.default.createElement(_reactBootstrap.Form.Group, null, _react.default.createElement(_reactBootstrap.Form.Label, null, "Transaction Amount"), _react.default.createElement(_reactBootstrap.FormControl, {
         input: "number",
         placeholder: "Amount",
         value: this.state.amount,
         onChange: this.updateAmount
       }), _react.default.createElement(_reactBootstrap.Form.Text, {
         className: "text-muted"
-      }, "Enter an amount greater than zero")), _react.default.createElement("div", null, _react.default.createElement(_reactBootstrap.Button, {
+      }, _react.default.createElement("span", {
+        style: {
+          color: "red"
+        }
+      }, this.state.errorText))), _react.default.createElement("div", null, _react.default.createElement(_reactBootstrap.Button, {
         variant: "danger",
         bsStyle: "danger",
         onClick: this.conductTransaction
@@ -49879,12 +49904,21 @@ var Help = /*#__PURE__*/function (_Component) {
         className: "ConductTransaction"
       }, _react.default.createElement(_Navigation.default, null), _react.default.createElement("h3", {
         className: "heading"
-      }, "Help"), _react.default.createElement("br", null), _react.default.createElement("p", {
+      }, "OLTCoin Guidelines"), _react.default.createElement("br", null), _react.default.createElement("p", {
         className: "Help"
       }, "New to OLTcoin? Spare a minute!", _react.default.createElement("ul", null, _react.default.createElement("li", null, "The minimum transaction amount is 1 ", _react.default.createElement("img", {
         className: "helpBalance",
         src: _olt.default
-      }), " "), _react.default.createElement("li", null, "Unit"), _react.default.createElement("li", null, "Each transaction costs you 2 OLT"), _react.default.createElement("li", null, "On mining transactions, the miner gets the corresponding transaction fee and also an additional 50 OLtcoins. Each miner is rewarded 50 oltcoins by the blockchain and alsogets reward to the number of transactions added and also, an additional 50 oltcoins"), _react.default.createElement("li", null, "Unit"), _react.default.createElement("li", null, "Unit"))));
+      }), " "), _react.default.createElement("li", null, "Each transaction costs you 2 ", _react.default.createElement("img", {
+        className: "helpBalance",
+        src: _olt.default
+      }), " "), _react.default.createElement("li", null, "On mining transactions, you get 50 ", _react.default.createElement("img", {
+        className: "helpBalance",
+        src: _olt.default
+      }), " block reward in addition to the transaction fee corresponding to the mined block. "), _react.default.createElement("li", null, "A new user is given 1000 ", _react.default.createElement("img", {
+        className: "helpBalance",
+        src: _olt.default
+      }), ". This provision and block reward will be unavailable once the total supply of OLTcoins gets depleted "))));
     }
   }]);
 
@@ -49975,7 +50009,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42183" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43725" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

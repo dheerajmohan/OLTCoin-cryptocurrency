@@ -5,7 +5,7 @@ import history from "../history";
 import Navigation from "./Navigation";
 
 class ConductTransaction extends Component {
-    state = { recipient: '', amount: '', knownAddresses: [] };
+    state = { recipient: '', amount: '', knownAddresses: [], errorText: '', isValid: false};
 
     componentDidMount() {
         fetch(`${document.location.origin}/api/known-addresses`)
@@ -18,21 +18,35 @@ class ConductTransaction extends Component {
     }
 
     updateAmount = event => {
-        this.setState({ amount: Number(event.target.value) });
+        const val = event.target.value;
+        if(isNaN(val)) {
+            this.setState({ amount: val, errorText: 'Enter a number', isValid: false });
+        }
+        else if(val <= 0) {
+            this.setState({ amount: val, errorText: 'Enter a number greater than zero', isValid: false });
+
+        }
+        else {
+            this.setState({ amount: Number(event.target.value), errorText: '', isValid: true});
+        }
     }
 
     conductTransaction = () => {
         const {recipient, amount} = this.state;
 
-        fetch(`${document.location.origin}/api/transact`, {
-            method: 'POST',
-            headers: {'Content-type': 'application/json'},
-            body: JSON.stringify({recipient, amount})
-        }).then(response => response.json())
-          .then(json => {
-              alert(json.message || json.type);
-              history.push('/transaction-pool');
-          });
+        if(this.state.isValid && this.state.recipient != '') {
+            fetch(`${document.location.origin}/api/transact`, {
+                method: 'POST',
+                headers: {'Content-type': 'application/json'},
+                body: JSON.stringify({recipient, amount})
+            }).then(response => response.json())
+              .then(json => {
+                  alert(json.message || json.type);
+                  history.push('/transaction-pool');
+              });
+        }
+
+
     }
 
     render() {
@@ -62,9 +76,9 @@ class ConductTransaction extends Component {
                         value = {this.state.recipient}
                         onChange = {this.updateRecipient}
                         />                        
-                        <Form.Text className="text-muted">
+                        {/* <Form.Text className="text-muted">
                         You should not enter your own address
-                        </Form.Text>
+                        </Form.Text> */}
                     </Form.Group>
 
                     <Form.Group>
@@ -76,7 +90,7 @@ class ConductTransaction extends Component {
                         onChange = {this.updateAmount}
                         />                      
                         <Form.Text className="text-muted">
-                        Enter an amount greater than zero
+                            <span style={{color: "red"}}>{this.state.errorText}</span>
                         </Form.Text>
                     </Form.Group>
 

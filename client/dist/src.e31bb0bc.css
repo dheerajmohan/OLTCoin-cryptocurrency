@@ -86,7 +86,9 @@ a:hover {
 
 
   @media screen and (min-width: 768px) {
-
+    .navbar-nav>li {
+        display: flex !important;
+      }
 
     .navbar-nav {
         display: flex !important;

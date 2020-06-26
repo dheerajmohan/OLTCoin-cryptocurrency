@@ -63,17 +63,23 @@ a:hover {
     flex-wrap: nowrap;
 } */
 
-@media only screen and (max-width: 900px) {
+/* @media only screen and (max-width: 900px) {
     .nav {
       display: flex;
       flex-wrap: wrap;
     }
-}
+} */
 
-.nav {
+@media screen and (max-width: 767px) {
+    .nav>li {
+      display: inline-block !important;
+    }
+  }
+
+/* .nav {
     display: flex;
     flex-wrap: nowrap;
-  }
+  } */
 
 .navbar,
 .navbar-default {

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import logo from '../assets/logo.png';
+import olt from '../assets/olt.png';
+
 import Navigation from "./Navigation";
 import {Container, Row, Col, Jumbotron} from "react-bootstrap";
 
@@ -41,22 +43,27 @@ class App extends Component {
                 <br />
                 <Container>
                         <Row>
-                            <Col xs={8} md={6}>
+                            <Col xs={7} md={6}>
                                 <span className="keyText">Address </span>
                             </Col>
-                            <Col xs={4} md={6}>
+                            <Col xs={5} md={6}>
                                 <span className="keyText">Balance </span>
 
                             </Col>
                         </Row>
                         <br />
                         <Row>
-                            <Col xs={8} md={6}>
+                            <Col xs={7} md={6}>
                             <span className="valueText">{address}</span>
 
                             </Col>
-                            <Col xs={4} md={6}>
-                                <span className="balance">{balance}</span>
+                            <Col xs={5} md={6}>
+                                <span className="balance">
+                                    {balance}{' '} 
+                                    <img  className='oltBalance' src={olt}></img>
+                                </span>                                
+
+
                             </Col>
                         </Row>
                 </Container>

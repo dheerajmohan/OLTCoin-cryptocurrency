@@ -33849,6 +33849,8 @@ var _default = (0, _createBrowserHistory.default)();
 exports.default = _default;
 },{"history/createBrowserHistory":"../../node_modules/history/createBrowserHistory.js"}],"assets/logo.png":[function(require,module,exports) {
 module.exports = "/logo.e9a9c890.png";
+},{}],"assets/olt.png":[function(require,module,exports) {
+module.exports = "/olt.65978bfd.png";
 },{}],"../../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js":[function(require,module,exports) {
 "use strict";
 
@@ -48716,6 +48718,8 @@ var _logo = _interopRequireDefault(require("../assets/logo.png"));
 
 var _reactBootstrap = require("react-bootstrap");
 
+var _olt = _interopRequireDefault(require("../assets/olt.png"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -48766,7 +48770,10 @@ var Navigation = /*#__PURE__*/function (_Component) {
         variant: "dark"
       }, _react.default.createElement(_reactBootstrap.Navbar.Brand, {
         href: "/"
-      }, "OLTCoin"), _react.default.createElement(_reactBootstrap.Navbar.Toggle, {
+      }, _react.default.createElement("img", {
+        className: "olt",
+        src: _olt.default
+      }), ' ', "OLTCoin"), _react.default.createElement(_reactBootstrap.Navbar.Toggle, {
         "aria-controls": "responsive-navbar-nav"
       }), _react.default.createElement(_reactBootstrap.Navbar.Collapse, {
         id: "responsive-navbar-nav"
@@ -48786,7 +48793,7 @@ var Navigation = /*#__PURE__*/function (_Component) {
 }(_react.Component);
 
 exports.default = Navigation;
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/es/index.js","../assets/logo.png":"assets/logo.png","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js"}],"components/App.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/es/index.js","../assets/logo.png":"assets/logo.png","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js","../assets/olt.png":"assets/olt.png"}],"components/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -48799,6 +48806,8 @@ var _react = _interopRequireWildcard(require("react"));
 var _reactRouterDom = require("react-router-dom");
 
 var _logo = _interopRequireDefault(require("../assets/logo.png"));
+
+var _olt = _interopRequireDefault(require("../assets/olt.png"));
 
 var _Navigation = _interopRequireDefault(require("./Navigation"));
 
@@ -48895,26 +48904,29 @@ var App = /*#__PURE__*/function (_Component) {
           fontSize: "4em"
         }
       }, "OLTCoin"))))), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement(_reactBootstrap.Container, null, _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement(_reactBootstrap.Col, {
-        xs: 8,
+        xs: 7,
         md: 6
       }, _react.default.createElement("span", {
         className: "keyText"
       }, "Address ")), _react.default.createElement(_reactBootstrap.Col, {
-        xs: 4,
+        xs: 5,
         md: 6
       }, _react.default.createElement("span", {
         className: "keyText"
       }, "Balance "))), _react.default.createElement("br", null), _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement(_reactBootstrap.Col, {
-        xs: 8,
+        xs: 7,
         md: 6
       }, _react.default.createElement("span", {
         className: "valueText"
       }, address)), _react.default.createElement(_reactBootstrap.Col, {
-        xs: 4,
+        xs: 5,
         md: 6
       }, _react.default.createElement("span", {
         className: "balance"
-      }, balance)))), _react.default.createElement("br", null));
+      }, balance, ' ', _react.default.createElement("img", {
+        className: "oltBalance",
+        src: _olt.default
+      }))))), _react.default.createElement("br", null));
     }
   }]);
 
@@ -48923,7 +48935,7 @@ var App = /*#__PURE__*/function (_Component) {
 
 var _default = App;
 exports.default = _default;
-},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/es/index.js","../assets/logo.png":"assets/logo.png","./Navigation":"components/Navigation.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js"}],"components/Transaction.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-router-dom":"../../node_modules/react-router-dom/es/index.js","../assets/logo.png":"assets/logo.png","../assets/olt.png":"assets/olt.png","./Navigation":"components/Navigation.js","react-bootstrap":"../../node_modules/react-bootstrap/esm/index.js"}],"components/Transaction.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

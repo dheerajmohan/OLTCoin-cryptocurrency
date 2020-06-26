@@ -22,7 +22,26 @@ body {
 .logo {
     width: 250px;
     height: 250px;
+    padding: 0;
+}
 
+.olt {
+    width: 2em !important;
+    height: auto !important;
+}
+
+.oltBalance {
+
+    width: 1em !important;
+    height: auto !important;  
+    margin-bottom: 5px;
+}
+
+
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
 }
 
 .WalletInfo {

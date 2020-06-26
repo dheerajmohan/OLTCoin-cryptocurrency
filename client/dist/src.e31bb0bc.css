@@ -82,6 +82,10 @@ a:hover {
     .nav {
         display: block !important;
     }
+
+    .oltLogo, .title {
+        text-align: center !important;
+    }
   }
 
 
@@ -141,8 +145,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .title {
     font-family: 'Playfair Display', serif;
-
+    text-align: left;
     color: #D46D0C;
+}
+
+.oltLogo {
+    text-align: right;
 }
 
 .heading {

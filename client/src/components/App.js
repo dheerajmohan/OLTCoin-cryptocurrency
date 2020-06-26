@@ -24,18 +24,19 @@ class App extends Component {
                 <Navigation/>
                 <Container>
                     <Row>
-                        <Col xs={12} md={6}>
-                            <img className='logo' src={logo}></img>
+                        <Col className="oltLogo" xs={12} md={6}>
+                            <img  className='logo' src={logo}></img>
                         </Col>
                         <Col xs={12} md={6}>
+                            <br />
+                            <br />
                             <div className = 'title'>
-                                <h2 style={{fontSize: 55}}>Welcome to</h2>  
-                                <h1 style={{fontSize: 100}}>OLTCoin</h1>                
+                                <h2 style={{fontSize: "2.5em"}}>Welcome to</h2>  
+                                <h1 style={{fontSize: "4em"}}>OLTCoin</h1>                
                             </div>     
                         </Col>
                     </Row>
                 </Container>
-                <br />
                 <br />
                 <br />
                 <Container>

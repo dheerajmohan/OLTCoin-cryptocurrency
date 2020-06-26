@@ -48875,6 +48875,7 @@ var App = /*#__PURE__*/function (_Component) {
       return _react.default.createElement("div", {
         className: "App"
       }, _react.default.createElement(_Navigation.default, null), _react.default.createElement(_reactBootstrap.Container, null, _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement(_reactBootstrap.Col, {
+        className: "oltLogo",
         xs: 12,
         md: 6
       }, _react.default.createElement("img", {
@@ -48883,17 +48884,17 @@ var App = /*#__PURE__*/function (_Component) {
       })), _react.default.createElement(_reactBootstrap.Col, {
         xs: 12,
         md: 6
-      }, _react.default.createElement("div", {
+      }, _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement("div", {
         className: "title"
       }, _react.default.createElement("h2", {
         style: {
-          fontSize: 55
+          fontSize: "2.5em"
         }
       }, "Welcome to"), _react.default.createElement("h1", {
         style: {
-          fontSize: 100
+          fontSize: "4em"
         }
-      }, "OLTCoin"))))), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement(_reactBootstrap.Container, null, _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement(_reactBootstrap.Col, {
+      }, "OLTCoin"))))), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement(_reactBootstrap.Container, null, _react.default.createElement(_reactBootstrap.Row, null, _react.default.createElement(_reactBootstrap.Col, {
         xs: 8,
         md: 6
       }, _react.default.createElement("span", {

@@ -105,6 +105,11 @@ a:hover {
     .oltLogo, .title {
         text-align: center !important;
     }
+
+    .loginForm {
+        width: 70% !important;
+        margin: 0 auto;
+    }
   }
 
 
@@ -220,6 +225,13 @@ h1, h2, h3, h4, h5, h6 {
     width: 50%;
     margin: 0 auto;
 }
+
+
+.loginForm {
+    width: 30%;
+    margin: 0 auto;
+}
+
 
 .form-label {
     margin-left: 0px !important;

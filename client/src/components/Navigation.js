@@ -11,12 +11,12 @@ import olt from '../assets/olt.png';
         return (
             <div >
                 <Navbar className="nav-style" collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <Navbar.Brand href="/"><img  className='olt' src={olt}></img>{' '}OLTCoin</Navbar.Brand>
+                <Navbar.Brand href="/home"><img  className='olt' src={olt}></img>{' '}OLTCoin</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav>
                         <Nav.Item>
-                            <Link to='/'>HOME</Link>
+                            <Link to='/home'>HOME</Link>
 
                         </Nav.Item>
                         <Nav.Item>

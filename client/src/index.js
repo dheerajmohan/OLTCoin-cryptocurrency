@@ -9,13 +9,15 @@ import TransactionPool from './components/TransactionPool';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+import Login from './components/Login';
 
 
 
 render(
     <Router history={history} >
         <Switch>
-            <Route exact path='/' component={App} />
+            <Route exact path='/' component={Login} />
+            <Route exact path='/home' component={App} />
             <Route path='/blocks' component={Blocks} />
             <Route path='/conduct-transaction' component={ConductTransaction} />
             <Route path='/transaction-pool' component={TransactionPool} />

@@ -71,7 +71,7 @@ class ConductTransaction extends Component {
                         <Form.Label>Transaction Amount</Form.Label>
                         <FormControl 
                         input = 'number'
-                        placeholder = 'Amout'
+                        placeholder = 'Amount'
                         value = {this.state.amount}
                         onChange = {this.updateAmount}
                         />                      

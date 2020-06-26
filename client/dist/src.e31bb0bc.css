@@ -71,15 +71,16 @@ a:hover {
 } */
 
 @media screen and (max-width: 767px) {
-    .nav>li {
+    .navbar-nav>li {
       display: inline-block !important;
     }
   }
 
-/* .nav {
-    display: flex;
-    flex-wrap: nowrap;
-  } */
+.navbar-nav {
+    /* display: flex;
+    flex-wrap: nowrap; */
+    width: 100%;
+  }
 
 .navbar,
 .navbar-default {
@@ -96,8 +97,8 @@ a:hover {
     /* padding-left: 10% !important;
     padding-right: 10% !important; */
     color: #c3073f !important;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 1%;
+    margin-right: 1%;
     font-family: 'Roboto Condensed', sans-serif;    font-size: 1.2em;
 }
 

@@ -1,3 +1,5 @@
+//Conduct Transaction Page
+
 import React, { Component } from "react";
 import { Form, FormGroup, FormControl, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -7,6 +9,7 @@ import Navigation from "./Navigation";
 class ConductTransaction extends Component {
     state = { recipient: '', amount: '', knownAddresses: [], errorText: '', isValid: false};
 
+//Fetch previously encountered addresses
     componentDidMount() {
         fetch(`${document.location.origin}/api/known-addresses`)
             .then(response => response.json())
@@ -31,6 +34,7 @@ class ConductTransaction extends Component {
         }
     }
 
+    //Transaction function after input form validation
     conductTransaction = () => {
         const {recipient, amount} = this.state;
 

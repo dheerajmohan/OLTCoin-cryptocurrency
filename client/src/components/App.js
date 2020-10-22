@@ -7,11 +7,14 @@ import Navigation from "./Navigation";
 import {Container, Row, Col, Jumbotron} from "react-bootstrap";
 
 
+//Main App Ckass
 class App extends Component {
     state = {
         walletInfo: {}, total: {}    
     };
 
+
+//Fetch details of the wallet
     componentDidMount() {
         fetch(`${document.location.origin}/api/wallet-info`)
             .then(response => response.json())
@@ -25,6 +28,7 @@ class App extends Component {
         
     }
 
+//Rendering the page
     render() {
         const {address, balance} = this.state.walletInfo;
         const {total} = this.state.total;
